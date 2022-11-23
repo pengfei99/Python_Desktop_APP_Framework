@@ -5,7 +5,7 @@ from PyQt6.QtGui import QIcon, QFileSystemModel
 
 class App(QWidget):
 
-    def __init__(self,rootPath):
+    def __init__(self, rootPath):
         super().__init__()
         self.title = 'Explorer files'
         self.left = 10
@@ -14,7 +14,7 @@ class App(QWidget):
         self.height = 480
         self.initUI(rootPath)
 
-    def initUI(self,rootPath):
+    def initUI(self, rootPath):
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top, self.width, self.height)
 
@@ -43,8 +43,21 @@ class App(QWidget):
         windowLayout = QVBoxLayout()
         windowLayout.addWidget(self.tree)
         self.setLayout(windowLayout)
-
         self.show()
+
+    def getItems(self):
+        indexes = self.tree.selectedIndexes()
+        items = []
+        for index in indexes:
+            item = self.model.filePath(index)
+            items.append(item)
+
+        seen=[]
+        for item in items:
+            if item not in seen:
+                seen.append(item)
+                self.console.on_update_text(item)
+
 
 
 if __name__ == '__main__':
