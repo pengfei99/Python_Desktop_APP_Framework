@@ -113,10 +113,10 @@ to have `several dialogs to accomplish secondary actions` that depend on a user�
 **QMainWindow** provides a framework for building your application’s GUI quickly. This class has its own built-in layout, 
 which accepts the following graphical components:
 
-| Component                                                                                        | 	Position on Window | 	Description                      |
-|--------------------------------------------------------------------------------------------------|---------------------|-----------------------------------|
-| One [menu bar](https://www.riverbankcomputing.com/static/Docs/PyQt6/api/qtwidgets/qmenubar.html) | 	Top	               | Holds the application’s main menu |
-One or more toolbars	Sides	Hold tool buttons and other widgets, such as QComboBox, QSpinBox, and more
-One central widget	Center	Holds the window’s central widget, which can be of any type, including a composite widget
-One or more dock widgets	Around the central widget	Are small, movable, and hidable windows
-One status bar	Bottom	Holds the app’s status bar, which shows status information
+| Component                                                                                                        | 	Position on Window       | 	Description                                                                                                                                                      |
+|------------------------------------------------------------------------------------------------------------------|---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| One [menu bar](https://www.riverbankcomputing.com/static/Docs/PyQt6/api/qtwidgets/qmenubar.html)                 | 	Top	                     | Holds the application’s main menu                                                                                                                                 |
+| One or more [toolbars](https://www.riverbankcomputing.com/static/Docs/PyQt6/api/qtwidgets/qtoolbar.html)         | 	Sides	                   | Hold [tool buttons](https://www.riverbankcomputing.com/static/Docs/PyQt6/api/qtwidgets/qtoolbutton.html) and other widgets, such as QComboBox, QSpinBox, and more |
+| One central widget	                                                                                              | Center	                   | Holds the window’s central widget, which can be of any type, including a composite widget                                                                         |
+| One or more [dock widgets](https://www.riverbankcomputing.com/static/Docs/PyQt6/api/qtwidgets/qdockwidget.html)	 | Around the central widget | 	Are small, movable, and hidable windows                                                                                                                          |
+| One [status bar](https://www.riverbankcomputing.com/static/Docs/PyQt6/api/qtwidgets/qstatusbar.html)	            | Bottom	                   | Holds the app’s status bar, which shows status information                                                                                                        |
