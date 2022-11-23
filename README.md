@@ -120,3 +120,55 @@ which accepts the following graphical components:
 | One central widget	                                                                                              | Center	                   | Holds the window’s central widget, which can be of any type, including a composite widget                                                                         |
 | One or more [dock widgets](https://www.riverbankcomputing.com/static/Docs/PyQt6/api/qtwidgets/qdockwidget.html)	 | Around the central widget | 	Are small, movable, and hidable windows                                                                                                                          |
 | One [status bar](https://www.riverbankcomputing.com/static/Docs/PyQt6/api/qtwidgets/qstatusbar.html)	            | Bottom	                   | Holds the app’s status bar, which shows status information                                                                                                        |
+
+Code example can be found in [L07_main_window.py](src/L07_main_window.py)
+
+### 3.5. Applications
+
+`QApplication` is the core component of any PyQt application. It manages the `application’s control flow` and its `main settings`.
+
+**Every PyQt GUI application must have one QApplication instance**. Some responsibilities of this class include:
+
+- Handling the app’s `initialization and finalization`
+- Providing the `event loop` and event handling
+- Handling most system-wide and application-wide `settings`
+- Providing access to `global information`, such as the application’s directory, screen size, and so on
+- Parsing common `command-line arguments`
+- Defining the application’s `look and feel`
+- Providing `localization` capabilities
+
+### 3.6 Event loops
+
+GUI applications are `event-driven`, which means that functions and methods are called in response to user actions (e.g. clicking on a button). 
+**Events are handled by an event loop, also known as a main loop, which is an infinite loop**. The event loop continues 
+to work until the application is terminated.
+
+**All GUI applications have an event loop**. When an event happens, then the loop checks if it’s a `terminate event`. 
+In that case, the loop finishes, and the application exits. Otherwise, the event is sent to the `application’s event 
+queue` for further processing, and the loop iterates again. In PyQt6, you can run the app’s event loop by calling 
+`.exec() on the QApplication object`.
+
+
+### Signals and Slots
+
+`PyQt widgets act as event-catchers`. This means that every `widget can catch specific events`, like mouse clicks, 
+keypresses, and so on. In response to these events, a `widget emits a signal`, which is a kind of message that 
+announces `a change in its state`.
+
+The `signal on its own doesn’t perform any action`. If you want a signal to trigger an action, then you need to 
+**connect it to a slot**. This is the function or method that’ll perform an action whenever its associated signal 
+is emitted. You can use any `Python callable as a slot`.
+
+If a signal isn’t connected to any slot, then nothing happens and the signal is ignored. Some of the most relevant 
+features of signals and slots include the following:
+
+- A signal can be connected to one or many slots.
+- A signal may also be connected to another signal.
+- A slot may be connected to one or many signals.
+
+You can use the following syntax to connect a signal and a slot:
+```python
+widget.signal.connect(slot_function)
+```
+
+A complete example can be found in [L08_signal_slot.py](src/L08_signal_slot.py)
