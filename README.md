@@ -21,7 +21,7 @@ To run a PyQT app, you need to follow the below 5 steps
 4. Show your application's GUI
 5. Run your application's event loop, when user click on close, the application will stop too.
 
-You can find an example in [L01_hello_world.py](./src/L01_hello_world.py)
+You can find an example in [L01_hello_world.py](src/Lessons/L01_hello_world.py)
 
 
 ## 2. Code Styles of PyQT app
@@ -73,14 +73,14 @@ You need to arrange the widgets so that your GUI is both coherent and functional
 **To avoid all the manual calculations, we need to use Layout managers**. PyQt provides four basic layout manager 
 classes:
 
-- QHBoxLayout : arranges widgets horizontally from left to right. code example [L02_horizontal_layout.py](src/L02_horizontal_layout.py)
-- QVBoxLayout : arranges widgets vertically from top to bottom. code example [L03_vertical_layout.py](src/L03_vertical_layout.py)
+- QHBoxLayout : arranges widgets horizontally from left to right. code example [L02_horizontal_layout.py](src/Lessons/L02_horizontal_layout.py)
+- QVBoxLayout : arranges widgets vertically from top to bottom. code example [L03_vertical_layout.py](src/Lessons/L03_vertical_layout.py)
 - QGridLayout : arranges widgets in a `grid of rows and columns`. Every widget will have a `relative position` on the grid. 
                 You can define `a widget’s position with a pair of coordinates like (row, column)`. Each coordinate must 
-                be an `integer` number. [L04_grid_layout.py](src/L04_grid_layout.py)
+                be an `integer` number. [L04_grid_layout.py](src/Lessons/L04_grid_layout.py)
 - QFormLayout : arranges widgets in a **two-column layout**. The first column usually `displays messages in labels`. The
                 second column generally `contains widgets like QLineEdit, QComboBox, QSpinBox`, and so on. code example
-                [L05_form_layout.py](src/L05_form_layout.py).
+                [L05_form_layout.py](src/Lessons/L05_form_layout.py).
 
 ### 3.3 Dialogs window app
 
@@ -102,7 +102,7 @@ can be
   then the dialog will get its own entry in the system’s task bar.
 
 
-A code example can be found in [L06_dialog.py](./src/L06_dialog.py)
+A code example can be found in [L06_dialog.py](src/Lessons/L06_dialog.py)
 
 ### 3.4 Main window app
 
@@ -121,7 +121,7 @@ which accepts the following graphical components:
 | One or more [dock widgets](https://www.riverbankcomputing.com/static/Docs/PyQt6/api/qtwidgets/qdockwidget.html)	 | Around the central widget | 	Are small, movable, and hidable windows                                                                                                                          |
 | One [status bar](https://www.riverbankcomputing.com/static/Docs/PyQt6/api/qtwidgets/qstatusbar.html)	            | Bottom	                   | Holds the app’s status bar, which shows status information                                                                                                        |
 
-Code example can be found in [L07_main_window.py](src/L07_main_window.py)
+Code example can be found in [L07_main_window.py](src/Lessons/L07_main_window.py)
 
 ### 3.5. Applications
 
@@ -171,14 +171,14 @@ You can use the following syntax to connect a signal and a slot:
 widget.signal.connect(slot_function)
 ```
 
-A complete example can be found in [L08_signal_slot.py](src/L08_signal_slot.py)
+A complete example can be found in [L08_signal_slot.py](src/Lessons/L08_signal_slot.py)
 
 In the previous code example, the **slot** does not take arguments. But in real life situation, slot may take one or 
 more arguments. We can use two ways to link a slot with arguments to a signal
 - functools.partial
 - lambda function
 
-You can check the [L08_signal_slot_improved.py](src/L08_signal_slot_improved.py) for the functools example.
+You can check the [L08_signal_slot_improved.py](src/Lessons/L08_signal_slot_improved.py) for the functools example.
 
 ## 4. A real life project
 
