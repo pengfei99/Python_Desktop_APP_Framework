@@ -8,7 +8,8 @@ packages = [{include = "python_desktop_app_framework"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-PyQt6 = "^6.4.0"
+PyQt6 = "^6.1.0"
+pyqt6-tools = "^6.1.0.3.2"
 
 
 [build-system]
