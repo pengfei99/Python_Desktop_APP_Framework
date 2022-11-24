@@ -239,3 +239,23 @@ qt6-tools designer
 ```
 
 If everything works well, you should see below Gui.
+
+![qt_designer_ui.PNG](image/qt_designer_ui.PNG)
+
+## 5.2 QT designer basics
+
+In the above figure you can see the `qt designer’s main window(background)` and the `New Form dialog`(foreground). 
+In the `New Form` dialog, you can select from `five available GUI templates`:
+
+| Template                   | 	Form Type  | 	Widgets                                                                | 	Base Class |
+|----------------------------|-------------|-------------------------------------------------------------------------|-------------|
+| Dialog with Buttons Bottom | 	Dialog     | 	OK and Cancel buttons laid out horizontally on the bottom-right corner | 	QDialog    |
+| Dialog with Buttons Right	 | Dialog	     | OK and Cancel buttons laid out vertically on the top-right corner	      | QDialog     |
+| Dialog without Buttons	    | Dialog	     | No	                                                                     | QDialog     |
+| Main Window	               | Main Window | 	A menu bar at the top and a status bar at the bottom	                  | QMainWindow |
+| Widget	                    | Widget	     | No	                                                                     | QWidget     |
+
+You can click on `File->New` to show the qt designer.
+
+> Note that the first two dialog templates have their own `default buttons`. These are standard buttons included in 
+  a `QDialogButtonBox`. This class automatically handles the position or order of buttons across different platforms.
