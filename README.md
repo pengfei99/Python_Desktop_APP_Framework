@@ -208,3 +208,34 @@ Here’s a step-by-step description of how your GUI calculator app will work:
 6. The user finally sees the requested `result on the view`.
 
 ###  4.1 Create a view class
+
+### 4.2 Model
+
+### 4.3 Control
+
+## 5. Qt Designer
+
+There are 3 ways to install qt designer
+- use pip
+- use linux system package manager
+- use qt official standalone installer
+
+### 5.1 Install via pip
+
+When using pip, we recommend you to create a virtual environment. Then install the qt designer in the virtual 
+environment.
+
+```shell
+# create virtual env
+python3 -m venv ./venv
+# activate venv
+source venv/bin/activate
+
+# install qt designer 
+pip install pyqt6 pyqt6-tools
+
+# run the qt designer
+qt6-tools designer
+```
+
+If everything works well, you should see below Gui.
