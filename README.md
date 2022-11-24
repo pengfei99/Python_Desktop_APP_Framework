@@ -215,6 +215,9 @@ Here’s a step-by-step description of how your GUI calculator app will work:
 
 ## 5. Qt Designer
 
+Some Reading materials:
+- [tutorial for beginners](https://realpython.com/qt-designer-python/#building-main-windows-with-qt-designer-and-python)
+
 There are 3 ways to install qt designer
 - use pip
 - use linux system package manager
@@ -259,3 +262,82 @@ You can click on `File->New` to show the qt designer.
 
 > Note that the first two dialog templates have their own `default buttons`. These are standard buttons included in 
   a `QDialogButtonBox`. This class automatically handles the position or order of buttons across different platforms.
+ 
+
+### 5.2.1 QT designer main Window
+
+Qt Designer’s main window provides a menu bar with options for 
+- saving and managing forms, 
+- editing forms and changing the edit mode, 
+- laying out and previewing forms, 
+- tuning the application’s settings
+- accessing its help documentation
+
+#### Left hand side
+On the left hand side, you can find the widget box, you can find all available objects that you can use to create a GUI:
+- layout managers
+- spacers
+- standard widgets
+- ETC.
+
+#### Right hand side
+On the right hand side, you can find the 
+- **Object Inspector**: provides a tree view of all the objects on the current form. The Object Inspector also has a 
+                        filter box at the top to allow you to find objects in the tree. You can use the Object 
+                         Inspector to set the name and other properties of the form and its widgets. You can also 
+                         `right-click` any widget to access a context menu with additional options
+- **Property Editor**:  holds a two-column table with the active `object’s properties` and their `values`. You can use 
+                        the Property Editor to edit the value of an object’s properties, as the name implies.
+- **Resource Browser**: provides a quick way of adding resources, such as icons, translation files, images, and other binary files to your applications.
+- **Action Editor**: provides a way to create actions and add them to your forms.
+- **Signal/Slot Editor**: provides a way to connect signals and slots in your forms.
+
+### 5.2.2 Workflow
+
+You can design your GUI just with drag and drop. Once you finished the editing, you can save it in a file. `Qt Designer
+saves its forms in .ui files`, which are `XML files` that contain all the information you’ll need to later recreate 
+the GUI in your applications.
+
+To save a form, you can click on `File -> Save`, enter `<form-name>.ui` , select a directory to save the file in, 
+and click `Save` button. Or just pressing `Ctrl+S` on your keyboard.
+
+## 5.3 A simple example
+
+Create a main window, then edit the `menu bar` by clicking on the "Type Here". You can preview your form by clicking 
+`Form->Preview`, or hit the key combination `Ctrl+R` on your keyboard.
+
+### Menu bar shortcut
+You can use an `ampersand symbol (&)` before a given letter to provide a `keyboard shortcut`. For example, if you 
+add &File in the File menu, then you can access this menu by pressing `Alt+F`.
+
+### Button separator
+
+You can add `separators` to your menus. This is a good way to visually separate menu options and group them logically. 
+To add a separator, `double-click the Add Separator option` at the end of the active menu in the Menu Editor.
+
+You can `remove an existing separator by right-clicking it` and then `selecting Remove Separator` in the context menu. 
+This menu also allows you to add new separators.
+
+### submenu 
+To add a `submenu` to a given menu option, `click the icon on the right side of the menu` option to which you want to 
+attach the submenu. 
+
+
+### Action
+
+When you add a menu option to a given menu, you create an `action`. Qt Designer provides an `Action Editor` for 
+creating, customizing, and managing actions. The tool provides a few handy options that you can use to fine-tune your actions:
+- The text of the action, which will be shown on menu options and toolbar buttons
+- The object name, which you’ll use in your code to reference the action object
+- The icons that will be shown on your menu options and toolbar buttons
+- The checkable property of the action
+- The keyboard shortcuts, which will provide the user with a quick way to access the action
+
+### Laying out a single Central Widget
+
+**Qt Designer uses QMainWindow for building its Main Window template**. This class provides a default layout that allows 
+you to create `a menu bar, one or more toolbars, one or more dock widgets, a status bar, and a central widget.`
+
+By default, Qt Designer uses a `QWidget object as the central widget` on the Main Window template. On top of that 
+widget, you can place either a `single widget or multiple widgets` in a coherent layout.
+
