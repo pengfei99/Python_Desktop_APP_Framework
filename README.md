@@ -487,3 +487,6 @@ Two other usefull function is :
 
 
 
+## External source
+
+pyqt6 tutorial : https://github.com/janbodnar/PyQt6-Tutorial-Examples
