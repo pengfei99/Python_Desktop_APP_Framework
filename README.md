@@ -213,7 +213,9 @@ Here’s a step-by-step description of how your GUI calculator app will work:
 
 ### 4.3 Control
 
+## 5. Qt designer
 
+Qt designer is a good tool, if you have complex UI to develop. You can check this [QT_designer_tutorial.md](QT_designer_tutorial.md) to learn the basic.
 
 ## External source
 
