@@ -213,7 +213,43 @@ Here’s a step-by-step description of how your GUI calculator app will work:
 
 ### 4.3 Control
 
-## 5. Qt designer
+## 5. A more complete example
+
+In this example, we will implement a todo list, it consists of a `QListView` for the list of items, a `QLineEdit` to 
+enter new items, and a set of buttons to add, delete, or mark items as done.
+
+### 5.1 The UI
+
+We build the UI by using Qt designer. The output is mainwindow.ui. The pyqt can load this file formart directly by
+using below code. Or you can convert it to .py file and import the class. For more information, please check section 6.
+
+### 5.2 The Model
+
+We define our custom model (e.g. TodoModel) by subclassing from a base implementation, allowing us to focus on the 
+parts unique to our model. Qt provides a number of different model bases, including `lists, trees and tables(ideal 
+for spreadsheets).`
+
+For this example we are displaying the result to a `QListView`. The matching base model for this is `QAbstractListModel`.
+The outline definition for our model is shown below.
+
+```python
+class TodoModel(QtCore.QAbstractListModel):
+    def __init__(self, *args, todos=None, **kwargs):
+        super(TodoModel, self).__init__(*args, **kwargs)
+        self.todos = todos or []
+
+    def data(self, index, role):
+        if role == Qt.ItemDataRole.DisplayRole:
+            # See below for the data structure.
+            status, text = self.todos[index.row()]
+            # Return the todo text only.
+            return text
+
+    def rowCount(self, index):
+        return len(self.todos)
+```
+
+## 6. Qt designer
 
 Qt designer is a good tool, if you have complex UI to develop. You can check this [QT_designer_tutorial.md](QT_designer_tutorial.md) to learn the basic.
 
