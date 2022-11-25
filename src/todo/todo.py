@@ -3,18 +3,69 @@ import json
 from PyQt6 import QtCore, QtGui, QtWidgets, uic
 from PyQt6.QtCore import Qt
 
+# import the generated UI
+from mainWindowUI import Ui_MainWindow
 
-qt_creator_file = "mainwindow.ui"
-Ui_MainWindow, QtBaseClass = uic.loadUiType(qt_creator_file)
+# load ui from .ui source, can have performance issues when UI is complex
+# qt_creator_file = "mainwindow.ui"
+# Ui_MainWindow, QtBaseClass = uic.loadUiType(qt_creator_file)
 tick = QtGui.QImage('tick.png')
 
 
 class TodoModel(QtCore.QAbstractListModel):
+    """
+    A model class that connects data source with the view
+
+    '''
+    Attributes
+    ----------
+    todos: List
+       a data store which stores the a tuple of values of the todo list in the format [(bool, str), (bool, str), (bool, str)]
+       where bool is the done state of a given entry, and str is the text of the todo.
+
+    Methods
+    -------
+    data(index,role)
+         It handles requests for data from the view and returns the appropriate result.
+    rowCount(index)
+        It is called by the view to get the number of rows in the current data
+    """
     def __init__(self, *args, todos=None, **kwargs):
+        """
+        Parameters
+        ----------
+        args :
+        todos : List
+             a data store which stores the a tuple of values of the todo list
+        kwargs :
+        """
         super(TodoModel, self).__init__(*args, **kwargs)
         self.todos = todos or []
 
     def data(self, index, role):
+        """This is the core function of QAbstractListModel, which handles requests for data from the view and
+           returns the appropriate result
+
+           If the view asks for display, it returns the text of the todo list. If it asks for decoration, it returns
+           the status of the todo list(e.g. complete, or not)
+
+        Parameters
+        ----------
+        index : QModelIndex
+           is the position/coordinates of the data which the view is requesting, accessible by two methods
+           .row() and .column() which give the position in each dimension.
+        role : int
+           is a flag indicating the type of data the view is requesting. This is because the .data() method actually
+           has more responsibility than just the core data. It also handles requests for style information, tooltips,
+           status bars, etc.  basically anything that could be informed by the data itself.
+           The naming of Qt.ItemDataRole.DisplayRole is a bit weird, but this indicates that the view is asking us
+           "please give me data for display". There are other roles which the data can receive for styling requests
+           or requesting data in "edit-ready" format.
+
+        Returns
+        -------
+
+        """
         if role == Qt.ItemDataRole.DisplayRole:
             _, text = self.todos[index.row()]
             return text
