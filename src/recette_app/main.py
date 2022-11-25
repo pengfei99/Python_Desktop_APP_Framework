@@ -2,6 +2,8 @@ import sys
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtCore import Qt
 import pandas as pd
+from DataReader import read_csv, read_sas, read_json, read_parquet, read_file
+# from mainWindowUI import
 
 
 class TableModel(QtCore.QAbstractTableModel):
@@ -33,26 +35,26 @@ class TableModel(QtCore.QAbstractTableModel):
 
 class MainWindow(QtWidgets.QMainWindow):
 
-    def __init__(self):
+    def __init__(self, filePath):
         super().__init__()
 
         self.table = QtWidgets.QTableView()
 
-        data = pd.DataFrame([
-            [1, 9, 2],
-            [1, 0, -1],
-            [3, 5, 2],
-            [3, 3, 2],
-            [5, 8, 9],
-        ], columns=['A', 'B', 'C'], index=['Row 1', 'Row 2', 'Row 3', 'Row 4', 'Row 5'])
+        data = read_file(filePath)
 
         self.model = TableModel(data)
         self.table.setModel(self.model)
 
         self.setCentralWidget(self.table)
 
+    def resetTableModel(self,filePath):
+        self.model=TableModel(read_file(filePath))
+        self.table.reset()
+        self.table.setModel(self.model)
+
+
 
 app = QtWidgets.QApplication(sys.argv)
-window = MainWindow()
+window = MainWindow("../../data/airline.csv")
 window.show()
 app.exec()

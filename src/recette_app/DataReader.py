@@ -53,7 +53,7 @@ def read_file(filePath: str):
 
 
 def main():
-    root_path = "../data"
+    root_path = "../../data"
     sas_file_path = f"{root_path}/airline.sas7bdat"
     df = read_sas(sas_file_path)
     csv_file_path = f"{root_path}/airline.csv"
