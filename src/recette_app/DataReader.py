@@ -1,8 +1,19 @@
 import pandas as pd
 import pathlib
+import pyarrow as pa
+import pyarrow.parquet as pq
 
 
-def write_csv(df, outputPath, separator=",", index=False,encoding="utf-8"):
+def write_parquet(df, outputPath, compression='snappy'):
+    table = pa.Table.from_pandas(df)
+    pq.write_table(table, outputPath, compression=compression)
+
+
+def read_parquet(file_path):
+    return None
+
+
+def write_csv(df, outputPath, separator=",", index=False, encoding="utf-8"):
     # index=False to write csv without index column which pandas added
     df.to_csv(outputPath, sep=separator, index=index, encoding=encoding)
 
@@ -34,6 +45,8 @@ def read_file(filePath: str):
         df = read_sas(filePath)
     elif fileExtension == "json":
         df = read_json(filePath)
+    elif fileExtension == "parquet":
+        df = read_parquet(filePath)
     else:
         raise NotImplementedError("The given file format is not supported")
     return df
@@ -45,12 +58,14 @@ def main():
     df = read_sas(sas_file_path)
     csv_file_path = f"{root_path}/airline.csv"
     json_file_path = f"{root_path}/airline.json"
-    write_csv(df, csv_file_path)
+    parquet_file_path = f"{root_path}/airline.parquet"
+    # write_csv(df, csv_file_path)
     # write_json(df, json_file_path)
+    write_parquet(df, parquet_file_path)
     df1 = read_file(sas_file_path)
     print(df1.head())
     df2 = read_file(csv_file_path)
-    print( df2.head())
+    print(df2.head())
     df3 = read_file(json_file_path)
     print(df3.head())
 
