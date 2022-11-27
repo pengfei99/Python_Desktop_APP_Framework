@@ -30,6 +30,7 @@ class TodoModel(QtCore.QAbstractListModel):
     rowCount(index)
         It is called by the view to get the number of rows in the current data
     """
+
     def __init__(self, *args, todos=None, **kwargs):
         """
         Parameters
@@ -83,30 +84,31 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         self.setupUi(self)
-        self.model = TodoModel()
-        self.load()
-        self.todoView.setModel(self.model)
-        self.addButton.pressed.connect(self.add)
-        self.deleteButton.pressed.connect(self.delete)
-        self.completeButton.pressed.connect(self.complete)
 
-    def add(self):
+
+class todoController:
+    def __init__(self, model, view):
+        self.model = model
+        self.view = view
+        self.connectSignalAndSlot()
+
+    def _add(self):
         """
         Add an item to our todo list, getting the text from the QLineEdit .todoEdit
         and then clearing it.
         """
-        text = self.todoEdit.text()
-        if text: # Don't add empty strings.
+        text = self.view.todoEdit.text()
+        if text:  # Don't add empty strings.
             # Access the list via the model.
             self.model.todos.append((False, text))
             # Trigger refresh.
             self.model.layoutChanged.emit()
             # Empty the input
-            self.todoEdit.setText("")
-            self.save()
+            self.view.todoEdit.setText("")
+            self._save()
 
-    def delete(self):
-        indexes = self.todoView.selectedIndexes()
+    def _delete(self):
+        indexes = self.view.todoView.selectedIndexes()
         if indexes:
             # Indexes is a list of a single item in single-select mode.
             index = indexes[0]
@@ -114,11 +116,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             del self.model.todos[index.row()]
             self.model.layoutChanged.emit()
             # Clear the selection (as it is no longer valid).
-            self.todoView.clearSelection()
-            self.save()
+            self.view.todoView.clearSelection()
+            self._save()
 
-    def complete(self):
-        indexes = self.todoView.selectedIndexes()
+    def _complete(self):
+        indexes = self.view.todoView.selectedIndexes()
         if indexes:
             index = indexes[0]
             row = index.row()
@@ -128,22 +130,31 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             # for a single selection.
             self.model.dataChanged.emit(index, index)
             # Clear the selection (as it is no longer valid).
-            self.todoView.clearSelection()
-            self.save()
+            self.view.todoView.clearSelection()
+            self._save()
 
-    def load(self):
+    def _load(self):
         try:
             with open('data.db', 'r') as f:
                 self.model.todos = json.load(f)
         except Exception:
             pass
 
-    def save(self):
+    def _save(self):
         with open('data.db', 'w') as f:
-            data = json.dump(self.model.todos, f)
+            json.dump(self.model.todos, f)
+
+    def connectSignalAndSlot(self):
+        self._load()
+        self.view.todoView.setModel(self.model)
+        self.view.addButton.pressed.connect(self._add)
+        self.view.deleteButton.pressed.connect(self._delete)
+        self.view.completeButton.pressed.connect(self._complete)
 
 
 app = QtWidgets.QApplication(sys.argv)
-window = MainWindow()
-window.show()
+todoView = MainWindow()
+todoView.show()
+todoModel = TodoModel()
+todoController(todoModel, todoView)
 app.exec()
