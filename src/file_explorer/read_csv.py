@@ -41,7 +41,10 @@ class MyTable(QTableWidget):
                         self.setItem(row, column, item)
         self.check_change = True
 
-
+# the main window starts first
+# 1. create a instance of MyTable (extends QTableWidget) of 10 rows*10 column init size
+# 2. mytable instance call the open_sheet method which starts a QFileDialog to get the filepath
+# 3. render the result on the data on the QTableWidget
 class Sheet(QMainWindow):
     def __init__(self):
         super().__init__()
