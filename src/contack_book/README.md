@@ -15,3 +15,4 @@ In this directory, we will build a contact book GUI application with `Python, SQ
     - `main.py`
     - `model.py`
 
+https://realpython.com/python-contact-book/
