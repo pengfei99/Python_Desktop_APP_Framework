@@ -257,3 +257,6 @@ Qt designer is a good tool, if you have complex UI to develop. You can check thi
 
 pyqt6 tutorial : https://github.com/janbodnar/PyQt6-Tutorial-Examples
 https://www.pythonguis.com/tutorials/pyqt6-modelview-architecture/
+
+
+##
