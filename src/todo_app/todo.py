@@ -20,8 +20,8 @@ class TodoModel(QtCore.QAbstractListModel):
     Attributes
     ----------
     todos: List
-       a data store which stores the a tuple of values of the todo list in the format [(bool, str), (bool, str), (bool, str)]
-       where bool is the done state of a given entry, and str is the text of the todo.
+       a data store which stores the a tuple of values of the todo_app list in the format [(bool, str), (bool, str), (bool, str)]
+       where bool is the done state of a given entry, and str is the text of the todo_app.
 
     Methods
     -------
@@ -36,18 +36,21 @@ class TodoModel(QtCore.QAbstractListModel):
         ----------
         args :
         todos : List
-             a data store which stores the a tuple of values of the todo list
+             the data store of the model which is a python list. It stores a tuple of values in the format
+             [(bool, str), (bool, str), (bool, str)] where bool is the done state of the task
         kwargs :
         """
         super(TodoModel, self).__init__(*args, **kwargs)
+        # This will set self.todos to the provided todos value if it is truthy (i.e. anything other than an empty list,
+        # the boolean False or None the default value), otherwise it will be set to the empty list [].
         self.todos = todos or []
 
     def data(self, index, role):
         """This is the core function of QAbstractListModel, which handles requests for data from the view and
            returns the appropriate result
 
-           If the view asks for display, it returns the text of the todo list. If it asks for decoration, it returns
-           the status of the todo list(e.g. complete, or not)
+           If the view asks for display, it returns the text of the todo_app list. If it asks for decoration, it returns
+           the status of the todo_app list(e.g. complete, or not)
 
         Parameters
         ----------
@@ -76,6 +79,21 @@ class TodoModel(QtCore.QAbstractListModel):
                 return tick
 
     def rowCount(self, index):
+        """
+        This method is called by the view to get the number of rows in the current data. This is required
+        for the view to know the maximum index it can request from the data store (row count-1). Since we're using
+        a Python list as our data store, the return value is the len() of the list.
+
+        Parameters
+        ----------
+        index : int
+              The starting index to start the row count
+
+        Returns
+        -------
+        int
+           The total row count of the data store
+        """
         return len(self.todos)
 
 
@@ -92,8 +110,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def add(self):
         """
-        Add an item to our todo list, getting the text from the QLineEdit .todoEdit
+        Add an item to our todo_app list, getting the text from the QLineEdit .todoEdit
         and then clearing it.
+
+        Returns
+        -------
         """
         text = self.todoEdit.text()
         if text: # Don't add empty strings.
@@ -103,9 +124,18 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.model.layoutChanged.emit()
             # Empty the input
             self.todoEdit.setText("")
+            # persist the data to a file
             self.save()
 
     def delete(self):
+        """
+        Delete an item to our toto_app list.
+
+        Returns
+        -------
+
+        """
+        # get the index of the selected task
         indexes = self.todoView.selectedIndexes()
         if indexes:
             # Indexes is a list of a single item in single-select mode.
@@ -139,6 +169,12 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             pass
 
     def save(self):
+        """
+        Write the todo task list into a file
+        Returns
+        -------
+
+        """
         with open('data.db', 'w') as f:
             data = json.dump(self.model.todos, f)
 
