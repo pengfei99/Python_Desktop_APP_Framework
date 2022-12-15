@@ -242,7 +242,7 @@ class TodoModel(QtCore.QAbstractListModel):
         if role == Qt.ItemDataRole.DisplayRole:
             # See below for the data structure.
             status, text = self.todos[index.row()]
-            # Return the todo text only.
+            # Return the todo_app text only.
             return text
 
     def rowCount(self, index):
