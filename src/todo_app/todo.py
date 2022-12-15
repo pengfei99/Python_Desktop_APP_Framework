@@ -100,10 +100,13 @@ class TodoModel(QtCore.QAbstractListModel):
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
+        # setupUi is defined in Ui_mainWindow class which create all Widgets
         self.setupUi(self)
         self.model = TodoModel()
         self.load()
+        # todoView is a QListView which accept a model
         self.todoView.setModel(self.model)
+        # link the button with a function
         self.addButton.pressed.connect(self.add)
         self.deleteButton.pressed.connect(self.delete)
         self.completeButton.pressed.connect(self.complete)
@@ -162,6 +165,12 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.save()
 
     def load(self):
+        """
+        Read the json file and assign the returned list to the model
+        Returns
+        -------
+
+        """
         try:
             with open('data.db', 'r') as f:
                 self.model.todos = json.load(f)

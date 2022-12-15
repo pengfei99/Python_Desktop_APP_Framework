@@ -160,7 +160,9 @@ class TodoModel(QtCore.QAbstractListModel):
         """
         return len(self.todos)
 ```
-## 
+## 4. The app View/Controller
+
+
 
 
 
