@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1723</width>
+    <height>1063</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>70</y>
+      <width>381</width>
+      <height>671</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QComboBox" name="cNameComboBox"/>
+       </item>
+       <item>
+        <widget class="QTableView" name="cDsTableView"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="addDs">
+         <property name="text">
+          <string>Import dataset</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>70</y>
+      <width>1051</width>
+      <height>671</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QTabWidget" name="tabWidget">
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="tab">
+        <attribute name="title">
+         <string>Tab 1</string>
+        </attribute>
+       </widget>
+       <widget class="QWidget" name="tab_2">
+        <attribute name="title">
+         <string>Tab 2</string>
+        </attribute>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1723</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuCohorts">
+    <property name="baseSize">
+     <size>
+      <width>10</width>
+      <height>10</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>KacstArt</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="title">
+     <string>&amp;Cohorts</string>
+    </property>
+    <addaction name="action_New"/>
+    <addaction name="action_Update_Delete"/>
+   </widget>
+   <widget class="QMenu" name="menuDescriptors">
+    <property name="title">
+     <string>&amp;Descriptors</string>
+    </property>
+    <addaction name="action_New_2"/>
+    <addaction name="action_Update_Delete_2"/>
+   </widget>
+   <addaction name="menuCohorts"/>
+   <addaction name="menuDescriptors"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="action_New">
+   <property name="text">
+    <string>New</string>
+   </property>
+  </action>
+  <action name="action_Update_Delete">
+   <property name="text">
+    <string>Manage_Cohorts</string>
+   </property>
+  </action>
+  <action name="action_New_2">
+   <property name="text">
+    <string>&amp;New</string>
+   </property>
+  </action>
+  <action name="action_Update_Delete_2">
+   <property name="text">
+    <string>Manage_Descriptor</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
