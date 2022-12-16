@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Pengfei data manager</string>
+   <string>Data validator</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="pushButton">
@@ -58,6 +58,9 @@
     </widget>
     <widget class="QWidget" name="horizontalLayoutWidget_2">
      <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="spacing">
+       <number>4</number>
+      </property>
       <item>
        <widget class="QTableView" name="tableView"/>
       </item>
@@ -76,12 +79,12 @@
    </property>
    <widget class="QMenu" name="menu_File">
     <property name="title">
-     <string>&amp;File</string>
+     <string>&amp;Cohort</string>
     </property>
     <addaction name="action_New"/>
-    <addaction name="action_Open"/>
-    <addaction name="actionOpen_Recent"/>
-    <addaction name="action_Save"/>
+    <addaction name="action_Update"/>
+    <addaction name="action_Delete"/>
+    <addaction name="action"/>
     <addaction name="action_Exit"/>
    </widget>
    <widget class="QMenu" name="menu_Settings">
@@ -103,24 +106,30 @@
     <string>&amp;New</string>
    </property>
   </action>
-  <action name="action_Open">
+  <action name="action_Update">
    <property name="text">
-    <string>&amp;Open</string>
+    <string>&amp;Update</string>
    </property>
   </action>
-  <action name="actionOpen_Recent">
+  <action name="action_Delete">
    <property name="text">
-    <string>Open &amp;Recent</string>
+    <string>&amp;Delete</string>
    </property>
   </action>
-  <action name="action_Save">
+  <action name="action">
    <property name="text">
     <string>&amp;Save</string>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
    </property>
   </action>
   <action name="action_Exit">
    <property name="text">
     <string>&amp;Exit</string>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
    </property>
   </action>
  </widget>
