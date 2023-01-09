@@ -42,14 +42,14 @@ class TableViewPandasModel(QAbstractTableModel):
                 return QVariant()
 
     def data(self, index, role=Qt.ItemDataRole.DisplayRole):
-        """
+        """ Override method from QAbstractTableModel. Return data cell from the pandas DataFrame
 
         Parameters
         ----------
-        index
-        role
+        index : index of the data cell
+        role : Display role of the table view
 
-        Returns
+        Returns the value of the data cell (QVariant)
         -------
 
         """
@@ -62,6 +62,18 @@ class TableViewPandasModel(QAbstractTableModel):
         return QVariant(str(self._df.iloc[index.row(), index.column()]))
 
     def setData(self, index, value, role):
+        """ This method allows user to reset/update the value of a data cell
+
+        Parameters
+        ----------
+        index : index of the selected data cell
+        value : the updated value of the data cell
+        role :
+
+        Returns True if update is succeeded
+        -------
+
+        """
         row = self._df.index[index.row()]
         col = self._df.columns[index.column()]
         if hasattr(value, 'toPyObject'):

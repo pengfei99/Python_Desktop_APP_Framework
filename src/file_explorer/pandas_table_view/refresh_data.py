@@ -16,7 +16,7 @@ from PyQt6 import QtGui, QtCore
 from time import time
 import threading
 
-from PyQt6.QtWidgets import QTableView, QWidget, QVBoxLayout, QApplication, QCheckBox
+from PyQt6.QtWidgets import QTableView, QWidget, QVBoxLayout, QApplication, QCheckBox, QAbstractItemView
 
 
 class MyWindow(QWidget):
@@ -29,8 +29,8 @@ class MyWindow(QWidget):
         self.table_model = MyTableModel(self, dataList, header)
         self.table_view = QTableView()
         # self.table_view.setSelectionMode(QAbstractItemView.SingleSelection)
-        self.table_view.setSelectionMode(QtGui.QAbstractItemView.SingleSelection)
-        self.table_view.setSelectionBehavior(QtGui.QAbstractItemView.SelectRows)
+        self.table_view.setSelectionMode(QAbstractItemView.SingleSelection)
+        self.table_view.setSelectionBehavior(QAbstractItemView.SelectRows)
         # bind cell click to a method reference
         self.table_view.clicked.connect(self.showSelection)
         self.table_view.clicked.connect(self.selectRow)
@@ -87,7 +87,7 @@ class MyTableModel(QAbstractTableModel):
         dataList2 = []
         if self.change_flag is True:
             dataList2 = [
-                [QtGui.QCheckBox("关"), 0, '063802', '01', 'rb1705,rb1710', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'MA',
+                [QCheckBox("关"), 0, '063802', '01', 'rb1705,rb1710', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'MA',
                  '01'],
                 [QtGui.QCheckBox("关"), 0, '063802', '02', 'cu1705,cu1710', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'MA',
                  '01'],

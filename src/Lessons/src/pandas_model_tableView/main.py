@@ -3,7 +3,7 @@ from PyQt6.QtWidgets import QPushButton, QWidget, QVBoxLayout, QHBoxLayout, QLin
 
 import pandas as pd
 
-from PandasModel import PandasModel
+from table_view_pandas_model import TableViewPandasModel
 
 
 class Widget(QWidget):
@@ -25,7 +25,7 @@ class Widget(QWidget):
         fileName, _ = QFileDialog.getOpenFileName(self, "Open File", "", "CSV Files (*.csv)")
         self.pathLE.setText(fileName)
         df = pd.read_csv(fileName)
-        model = PandasModel(df)
+        model = TableViewPandasModel(df)
         self.pandasTv.setModel(model)
 
 
