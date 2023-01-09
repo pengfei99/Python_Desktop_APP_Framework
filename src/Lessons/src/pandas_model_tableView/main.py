@@ -1,35 +1,38 @@
-from PyQt6 import QtCore, QtGui, QtWidgets
+from PyQt6.QtWidgets import QPushButton, QWidget, QVBoxLayout, QHBoxLayout, QLineEdit, QTableView, QFileDialog, \
+    QApplication
 
 import pandas as pd
 
 from PandasModel import PandasModel
 
 
-class Widget(QtWidgets.QWidget):
+class Widget(QWidget):
     def __init__(self, parent=None):
-        QtWidgets.QWidget.__init__(self, parent=None)
-        vLayout = QtWidgets.QVBoxLayout(self)
-        hLayout = QtWidgets.QHBoxLayout()
-        self.pathLE = QtWidgets.QLineEdit(self)
+        QWidget.__init__(self, parent=None)
+        vLayout = QVBoxLayout(self)
+        hLayout = QHBoxLayout()
+        self.pathLE = QLineEdit(self)
         hLayout.addWidget(self.pathLE)
-        self.loadBtn = QtWidgets.QPushButton("Select File", self)
+        self.loadBtn = QPushButton("Select File", self)
         hLayout.addWidget(self.loadBtn)
         vLayout.addLayout(hLayout)
-        self.pandasTv = QtWidgets.QTableView(self)
+        self.pandasTv = QTableView(self)
         vLayout.addWidget(self.pandasTv)
         self.loadBtn.clicked.connect(self.loadFile)
         self.pandasTv.setSortingEnabled(True)
 
     def loadFile(self):
-        fileName, _ = QtWidgets.QFileDialog.getOpenFileName(self, "Open File", "", "CSV Files (*.csv)");
+        fileName, _ = QFileDialog.getOpenFileName(self, "Open File", "", "CSV Files (*.csv)")
         self.pathLE.setText(fileName)
         df = pd.read_csv(fileName)
         model = PandasModel(df)
         self.pandasTv.setModel(model)
 
+
 if __name__ == "__main__":
     import sys
-    app = QtWidgets.QApplication(sys.argv)
+
+    app = QApplication(sys.argv)
     w = Widget()
     w.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
