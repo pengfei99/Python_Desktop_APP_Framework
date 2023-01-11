@@ -9,7 +9,7 @@ from mainWindowUI import Ui_MainWindow
 # load ui from .ui source, can have performance issues when UI is complex
 # qt_creator_file = "mainwindow.ui"
 # Ui_MainWindow, QtBaseClass = uic.loadUiType(qt_creator_file)
-tick = QtGui.QImage('tick.png')
+tick = QtGui.QImage('../../../resources/tick.png')
 
 
 class TodoModel(QtCore.QAbstractListModel):

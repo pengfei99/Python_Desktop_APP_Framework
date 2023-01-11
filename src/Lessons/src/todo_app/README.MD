@@ -34,14 +34,14 @@ to the user. Multiple Views can share the same data, presenting it in completely
 
 ## 2. The app UI
 
-The app UI is created by using Qt designer. The generated UI source is [mainwindow.ui](./mainwindow.ui). To make it more
+The app UI is created by using Qt designer. The generated UI source is [mainwindow.ui](mainwindow.ui). To make it more
 robust, we convert the .ui to .py by using below command
 
 ```shell
 pyuic6 -o mainWindowUI.py main_window_ui
 ```
 
-For more information about Qt designer, please visit [QT_designer_tutorial.md](../../QT_designer_tutorial.md)
+For more information about Qt designer, please visit [QT_designer_tutorial.md](../../../../QT_designer_tutorial.md)
 
 ## 3. The app model
 
