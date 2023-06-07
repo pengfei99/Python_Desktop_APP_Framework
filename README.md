@@ -171,14 +171,14 @@ You can use the following syntax to connect a signal and a slot:
 widget.signal.connect(slot_function)
 ```
 
-A complete example can be found in [L08_signal_slot.py](src/Lessons/L08_01_signal_slot.py)
+A complete example can be found in [L08_signal_slot.py](src/Lessons/src/03.signal_slot.py)
 
 In the previous code example, the **slot** does not take arguments. But in real life situation, slot may take one or 
 more arguments. We can use two ways to link a slot with arguments to a signal
 - functools.partial
 - lambda function
 
-You can check the [L08_signal_slot_improved.py](src/Lessons/L08_02_signal_slot_improved.py) for the functools example.
+You can check the [L08_signal_slot_improved.py](src/Lessons/src/04.signal_slot_improved.py) for the functools example.
 
 ## 4. A real life project
 
